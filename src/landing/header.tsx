@@ -1,3 +1,5 @@
+import { FiArrowRight } from "react-icons/fi";
+
 function Header(){
     return(
         <div className ="flex items-center h-full flex-wrap">
@@ -18,7 +20,7 @@ function Header(){
                 </h5>
                 <div className="callToAction">
                     <button className="cta-btn primary">
-                        Join The Boot Camp
+                        Join The Boot Camp<FiArrowRight className="display: inline-block" />
                     </button>
                     <button className="cta-btn secondary">
                         Explore The Program

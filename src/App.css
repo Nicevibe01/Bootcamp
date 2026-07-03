@@ -1,20 +1,38 @@
+:root {
+  --color-primary: #0f766e;
+  --color-primary-soft: rgba(15, 118, 110, 0.14);
+  --color-primary-hover: #14b8a6;
+  --color-primary-strong: #064e3b;
+  --color-on-primary: #ffffff;
+  --color-text: #0f172a;
+  --color-muted: #94a3b8;
+  --color-bg: #f8fafc;
+  --color-surface: #111827;
+  --color-surface-strong: #0f172a;
+  --color-shadow: rgba(23, 79, 83, 0.12);
+  --color-shadow-strong: rgba(23, 69, 87, 0.35);
+  --color-gradient-start: rgba(15, 118, 110, 0.35);
+  --color-gradient-end: rgba(15, 118, 110, 0.12);
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-.App{
- display: grid;
- grid-template-columns: 1fr;
- grid-template-rows: repeat(50, 40px);
- gap: 10px;
- background-color: #fff;
- scroll-behavior: smooth;
+
+.App {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(50, auto);
+  gap: 10px;
+  background-color: var(--color-bg);
+  scroll-behavior: smooth;
 }
 
 .App .main,
 .App .footer {
-  background-color: #3b3939;
+  background-color: var(--color-surface);
   border-radius: 10px;
   margin: 10px;
 }
@@ -24,11 +42,11 @@
   top: 10px;
   margin: 0 10px;
   z-index: 5;
-  background: #16a34a1e;
+  background: var(--color-primary-soft);
   backdrop-filter: blur(20px);
   border-radius: 10px;
-  padding: 0px 10px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.65);
+  padding: 0 10px;
+  box-shadow: 0 5px 10px var(--color-shadow);
 }
 .App .header {
   grid-row: 2/13;
@@ -39,12 +57,12 @@
   gap: 1.5rem;
   padding: 2rem 2rem 3rem;
   background:
-    radial-gradient(circle at top left, rgba(87, 209, 107, 0.493), transparent 30%),
-    radial-gradient(circle at bottom right, rgba(87, 209, 107, 0.493), transparent 35%),
-    linear-gradient(135deg, #0c5246 0%, #0c5246 45%, #0c5246 100%);
+    radial-gradient(circle at top left, var(--color-gradient-start), transparent 30%),
+    radial-gradient(circle at bottom right, var(--color-gradient-start), transparent 35%),
+    linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-strong) 45%, var(--color-primary) 100%);
   border-radius: 10px;
   margin: 10px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.65);
+  box-shadow: 0 5px 10px var(--color-shadow);
   overflow: hidden;
   position: relative;
 }
@@ -73,29 +91,38 @@
   display: flex;
   justify-content: space-around;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .link {
   text-decoration: none;
-  color: green;
+  color: var(--color-primary);
   font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: color 0.2s ease, transform 0.2s ease;
 }
-.link:hover{
-  color: #98b1a1;
-  text-shadow: 1px 1px #666 ;
+.link:hover {
+  color: var(--color-primary-hover);
+  transform: translateY(-1px);
 }
+
 .btn {
   text-decoration: none;
-  color: white;
+  color: var(--color-on-primary);
   font-weight: 600;
   cursor: pointer;
-  background-color: #16a34a;
+  background-color: var(--color-primary);
   border-radius: 0.5rem;
-  padding: 0.1rem 1.25rem;
+  padding: 0.45rem 1.25rem;
   display: inline-block;
+  margin: 5px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(22, 163, 74, 0.25);
 }
 
 .content {
@@ -105,25 +132,23 @@
 
 .header-subtitle,
 .header-description {
-  color: #d1d5db;
+  color: var(--color-muted);
   font-size: 0.9rem;
   font-weight: 600;
   margin: 0 0 0.75rem;
 }
 
-.header-title1 {
-  font-size: 3rem;
-  font-weight: 700;
-  line-height: 1.1;
-  margin: 0 0 1rem;
-  color: white;
-}
+.header-title1,
 .header-title2 {
   font-size: 3rem;
   font-weight: 700;
   line-height: 1.1;
   margin: 0 0 1rem;
-  color: green;
+  color: var(--color-on-primary);
+}
+.header-title2 {
+  color: var(--color-primary);
+  text-shadow: 1px 1px rgba(5, 34, 32, 0.35);
 }
 
 .callToAction {
@@ -141,15 +166,17 @@
   transition: all 0.3s ease;
 }
 
-.cta-btn.primary, .cta-btn.secondary:hover {
-  background-color: #16a34a;
-  color: white;
+.cta-btn.primary,
+.cta-btn.secondary:hover {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
   border: none;
 }
-.cta-btn.secondary, .cta-btn.primary:hover {
+.cta-btn.secondary,
+.cta-btn.primary:hover {
   background-color: transparent;
-  color: white;
-  border: 1px solid white;
+  color: var(--color-on-primary);
+  border: 1px solid var(--color-on-primary);
 }
 
 .App .header .floating-grids{
@@ -163,11 +190,11 @@
 
 .App .header .floating-grids .grid{
   padding: 10px 20px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
-  background: #16a34a1e;
+  box-shadow: 0 10px 20px var(--color-shadow-strong);
+  background: var(--color-primary-soft);
   backdrop-filter: blur(20px);
   border-radius: 0 10px 0 10px;
-  color: white;
+  color: var(--color-on-primary);
   font-size: 0.9rem;
   font-weight: 500;
   min-width: 140px;
@@ -184,12 +211,19 @@
     flex-direction: column;
     align-items: flex-start;
     padding: 1.5rem 1rem 2rem;
+    width: calc(100% - 30px);
+    height: 100vh;
+  }
+  .content{
+    padding-left: 2rem;
+  }
+  .App>div{
+    width: calc(100% - 30px);
   }
 
   .App .header .floating-grids {
-    display: flex;
-    flex-wrap: wrap;
     gap: 10px;
+    display: flex;
     margin-left: 0;
     margin-bottom: 0;
     margin-left: 0;
@@ -209,8 +243,8 @@
 .App .main .Sponsors,
 .App .main .Affiliate{
   z-index: 2;
-  border-radius: 10px ;
-  background-color: #252424;
+  border-radius: 10px;
+  background-color: var(--color-surface-strong);
 }
 .App .main .Attraction{
    grid-column: 1/3;
